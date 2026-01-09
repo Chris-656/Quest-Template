@@ -77,6 +77,7 @@ Material:
     - _CullMode: 0
     - _CullModeForward: 0
     - _DstBlend: 10
+    - _DstBlendAlpha: 10
     - _QueueControl: 0
     - _RefractionModel: 0
     - _SrcBlend: 5
