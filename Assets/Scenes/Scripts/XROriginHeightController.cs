@@ -64,7 +64,7 @@ public class XROriginHeightController : MonoBehaviour
                     scale.x = Mathf.Max(0.01f, scale.x + scaleChange); // Mindestgröße verhindern
                     objectToFollow.transform.localScale = scale;
                 }
-            }
+            } 
             // ...optional: alte Rotation um Y-Achse für xrOrigin entfernen, falls nicht mehr benötigt...
         }
 
