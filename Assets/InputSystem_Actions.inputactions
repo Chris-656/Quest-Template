@@ -1,4 +1,5 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
         {
@@ -986,6 +987,54 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "TrackedDeviceOrientation",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "XR",
+            "id": "c8d8c08a-7e1a-4e34-b77b-7c741529d7fe",
+            "actions": [
+                {
+                    "name": "PrevModel",
+                    "type": "Button",
+                    "id": "f8e51a33-de14-4b4d-9272-d4906f261776",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "NextModel",
+                    "type": "Button",
+                    "id": "fa277c0f-1c13-4819-b437-f60fc87cee43",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b3e00325-1859-4aa1-a968-a1b383e00e83",
+                    "path": "<XRController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PrevModel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf1e76b7-7bfb-4198-bea5-328e7ec3cf76",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "NextModel",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

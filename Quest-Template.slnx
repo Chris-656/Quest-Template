@@ -8,13 +8,13 @@
   <Project Path="WaveHarmonic.Crest.Samples.csproj" />
   <Project Path="WaveHarmonic.Crest.Shared.Editor.csproj" />
   <Project Path="WaveHarmonic.Crest.Shared.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="WaveHarmonic.Crest.Editor.csproj" />
   <Project Path="WaveHarmonic.Crest.Scripting.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.Ripples.csproj" />
   <Project Path="WaveHarmonic.Crest.Editor.Dependents.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.Boats.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.Examples.csproj" />
 </Solution>
