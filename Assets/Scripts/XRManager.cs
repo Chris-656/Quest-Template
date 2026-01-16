@@ -9,7 +9,7 @@ using UnityEngine.InputSystem;
 
 public class XRManager : MonoBehaviour
 {
-    // Typisierte Actions-Klasse (wird von Unity generiert)
+    // Typisierte Actions-Klasse (wird von Unity generiert) 
     private InputSystem_Actions controls;
     //public float heightSpeed = 1.0f; // Geschwindigkeit der Höhenänderung (z.B. per Stick)
     public float heightButtonSpeed = 0.2f; // Geschwindigkeit für Taste X/Y (langsamer)
