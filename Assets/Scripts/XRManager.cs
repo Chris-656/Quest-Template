@@ -27,6 +27,7 @@ public class XRManager : MonoBehaviour
 
     private Vector2 leftStickInput = Vector2.zero;
     private Vector2 rightStickInput = Vector2.zero;
+    
     void Start()
     {
         // Controls zuweisen und Events abonnieren
@@ -40,6 +41,7 @@ public class XRManager : MonoBehaviour
         controls.XR.RightStickMove.performed += ctx => rightStickInput = ctx.ReadValue<Vector2>();
         controls.XR.RightStickMove.canceled += ctx => rightStickInput = Vector2.zero;
         controls.Enable();
+
 
         xrOrigin = GetComponent<XROrigin>();
         if (xrOrigin != null)
@@ -59,7 +61,8 @@ public class XRManager : MonoBehaviour
             {
                 models.Add(child.gameObject);
             }
-            Debug.Log($"[XROriginHeightController] Models gefunden: {models.Count}");
+
+            // Show first model initially
             if (models.Count > 0)
             {
                 currentModelIndex = 0;
@@ -68,7 +71,7 @@ public class XRManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("[XROriginHeightController] Kein GameObject 'Models' gefunden!");
+            Debug.LogWarning("Kein GameObject 'Models' gefunden!");
         }
     }
 
@@ -90,14 +93,15 @@ public class XRManager : MonoBehaviour
             objectToFollow.transform.position += move * panSpeed * Time.deltaTime;
         }
 
-        // Keine Positions- oder Höhenänderung mehr, Tracking bleibt vollständig erhalten
 
         // Rotation direkt setzen
         xrOrigin.CameraFloorOffsetObject.transform.localRotation = Quaternion.Euler(0f, targetYRotation, 0f);
 
-        // ...Model-Cycling entfernt, nur noch Höhenänderung über X/Y-Button...
     }
 
+    /// <summary>
+    /// Zeigt nur das Modell am angegebenen Index an, alle anderen werden ausgeblendet
+    /// </summary>
     private void ShowOnlyModel(int index)
     {
         for (int i = 0; i < models.Count; i++)
@@ -107,6 +111,9 @@ public class XRManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Zeigt alle Modelle an
+    /// </summary>
     private void ShowAllModels()
     {
         for (int i = 0; i < models.Count; i++)
@@ -116,6 +123,9 @@ public class XRManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Zeigt das nächste Modell an oder alle Modelle, wenn das Ende erreicht ist
+    /// </summary>
     private void NextModel()
     {
         currentModelIndex++;
@@ -130,6 +140,9 @@ public class XRManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Zeigt das vorherige Modell an oder alle Modelle, wenn am Anfang
+    /// </summary>
     private void PrevModel()
     {
         if (currentModelIndex == -1)
