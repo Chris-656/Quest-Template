@@ -12,7 +12,7 @@ public class XRManager : MonoBehaviour
     // Typisierte Actions-Klasse (wird von Unity generiert) 
     private InputSystem_Actions controls;
     //public float heightSpeed = 1.0f; // Geschwindigkeit der Höhenänderung (z.B. per Stick)
-    public float heightButtonSpeed = 0.2f; // Geschwindigkeit für Taste X/Y (langsamer)
+    public float heightButtonSpeed1 = 0.2f; // Geschwindigkeit für Taste X/Y (langsamer)
     public float rotationSpeed = 60f; // Rotationsgeschwindigkeit in Grad pro Sekunde
     public float panSpeed = 1.0f; // Geschwindigkeit für Panning
     public GameObject objectToCycle; 
@@ -84,6 +84,7 @@ public class XRManager : MonoBehaviour
     void Update()
     {
         // Rechter Thumbstick: Nur links/rechts für Drehung um Y-Achse jetzt über Input System Event
+        // mein Kommentar
         if (objectToCycle != null && Mathf.Abs(rightStickInput.x) > 0.1f)
         {
             float rotY = -rightStickInput.x * rotationSpeed * Time.deltaTime;
