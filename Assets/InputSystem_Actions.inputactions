@@ -1062,7 +1062,7 @@
                     "path": "<XRController>{LeftHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";XR",
                     "action": "LeftStickMove",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1073,7 +1073,7 @@
                     "path": "<XRController>{RightHand}/thumbstick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";XR",
                     "action": "RightStickMove",
                     "isComposite": false,
                     "isPartOfComposite": false

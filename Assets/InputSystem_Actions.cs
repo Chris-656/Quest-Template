@@ -1148,7 +1148,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<XRController>{LeftHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";XR"",
                     ""action"": ""LeftStickMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1159,7 +1159,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""path"": ""<XRController>{RightHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": "";XR"",
                     ""action"": ""RightStickMove"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
