@@ -1031,6 +1031,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Rotatevertebrae",
+                    "type": "Button",
+                    "id": "d5061006-11f5-4c95-8e88-ac4ab3320123",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1075,6 +1084,17 @@
                     "processors": "",
                     "groups": ";XR",
                     "action": "RightStickMove",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f3074584-28a5-42f1-95d7-63490614b398",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotatevertebrae",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
