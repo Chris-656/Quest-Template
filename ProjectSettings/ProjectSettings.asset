@@ -827,8 +827,8 @@ PlayerSettings:
   webWasm2023: 0
   webEnableSubmoduleStrippingCompatibility: 0
   scriptingDefineSymbols:
-    Android: 
-    Standalone: 
+    Android: META_USE_STICK_CONTROL_THUMBSTICKS
+    Standalone: META_USE_STICK_CONTROL_THUMBSTICKS
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
