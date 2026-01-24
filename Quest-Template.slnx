@@ -4,17 +4,21 @@
   <Project Path="Unity.RenderPipelines.Core.Editor.csproj" />
   <Project Path="WaveHarmonic.Crest.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Editor.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.csproj" />
   <Project Path="WaveHarmonic.Crest.Shared.Editor.csproj" />
   <Project Path="WaveHarmonic.Crest.Shared.csproj" />
   <Project Path="WaveHarmonic.Crest.Editor.csproj" />
   <Project Path="WaveHarmonic.Crest.Scripting.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
-  <Project Path="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.Ripples.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.DeviceSimulator.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.csproj" />
   <Project Path="WaveHarmonic.Crest.Editor.Dependents.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.Boats.csproj" />
+  <Project Path="Unity.XR.Interaction.Toolkit.Samples.InteractionSimulator.Editor.csproj" />
   <Project Path="WaveHarmonic.Crest.Samples.Examples.csproj" />
 </Solution>

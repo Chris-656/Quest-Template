@@ -15,7 +15,7 @@ public class XRManager : MonoBehaviour
     public float heightButtonSpeed1 = 0.2f; // Geschwindigkeit für Taste X/Y (langsamer)
     public float rotationSpeed = 60f; // Rotationsgeschwindigkeit in Grad pro Sekunde
     public float panSpeed = 1.0f; // Geschwindigkeit für Panning
-    public GameObject objectToCycle; 
+    public GameObject objectToCycle;
     public List<GameObject> models = new List<GameObject>();
     private int currentModelIndex = -1;
     private bool prevPrimaryButton = false;
@@ -27,28 +27,36 @@ public class XRManager : MonoBehaviour
 
     private Vector2 leftStickInput = Vector2.zero;
     private Vector2 rightStickInput = Vector2.zero;
-    
-    /// <summary>
-    /// Start is called before the first frame update       
-    /// </summary>
+
+    // --- Input System Event Handler Methoden ---
+    private void OnPrevModel(UnityEngine.InputSystem.InputAction.CallbackContext ctx) => PrevModel();
+    private void OnNextModel(UnityEngine.InputSystem.InputAction.CallbackContext ctx) => NextModel();
+    private void OnLeftStickMove(UnityEngine.InputSystem.InputAction.CallbackContext ctx) => leftStickInput = ctx.ReadValue<Vector2>();
+    private void OnLeftStickMoveCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx) => leftStickInput = Vector2.zero;
+    private void OnRightStickMove(UnityEngine.InputSystem.InputAction.CallbackContext ctx) => rightStickInput = ctx.ReadValue<Vector2>();
+    private void OnRightStickMoveCanceled(UnityEngine.InputSystem.InputAction.CallbackContext ctx) => rightStickInput = Vector2.zero;
+
+    void Awake()
+    {
+        controls = new InputSystem_Actions();
+    }
+
+    void OnEnable()
+    {
+        // Events abonnieren
+        controls.XR.PrevModel.performed += OnPrevModel;
+        controls.XR.NextModel.performed += OnNextModel;
+        controls.XR.LeftStickMove.performed += OnLeftStickMove;
+        controls.XR.LeftStickMove.canceled += OnLeftStickMoveCanceled;
+        controls.XR.RightStickMove.performed += OnRightStickMove;
+        controls.XR.RightStickMove.canceled += OnRightStickMoveCanceled;
+
+        controls.XR.Enable();
+        controls.Enable();
+    }
+
     void Start()
     {
-        // Controls zuweisen und Events abonnieren
-        controls = new InputSystem_Actions();
-        controls.XR.PrevModel.performed += ctx => PrevModel();          // X Button Pressed
-        controls.XR.NextModel.performed += ctx => NextModel();          // Y Button Pressed
-        
-        // Event für linken Stick (Move) abonnieren
-        controls.XR.LeftStickMove.performed += ctx => leftStickInput = ctx.ReadValue<Vector2>();
-        controls.XR.LeftStickMove.canceled += ctx => leftStickInput = Vector2.zero;
-         controls.XR.LeftStickMove.Enable();
-        // Event für rechten Stick (Drehung) abonnieren
-        controls.XR.RightStickMove.performed += ctx => rightStickInput = ctx.ReadValue<Vector2>();
-        controls.XR.RightStickMove.canceled += ctx => rightStickInput = Vector2.zero;
-          controls.XR.RightStickMove.Enable();
-        controls.Enable();
-
-
         xrOrigin = GetComponent<XROrigin>();
         if (xrOrigin == null)
             xrOrigin = FindFirstObjectByType<XROrigin>();
@@ -67,7 +75,6 @@ public class XRManager : MonoBehaviour
 
         // Modelle aus dem GameObject "Models" im Scene-Hierarchiebaum befüllen
         GameObject modelsParent = GameObject.Find("Models");
-        // Wenn kein Models-Parent vorhanden ist, fallback auf objectToCycle oder dieses GameObject
         if (modelsParent == null)
         {
             if (objectToCycle == null)
@@ -88,7 +95,6 @@ public class XRManager : MonoBehaviour
             // Show first model initially (oder das aktive Kind)
             if (models.Count > 0)
             {
-                // Wenn eines der Kinder aktiv ist, wähle dieses als Startindex
                 int firstActive = -1;
                 for (int i = 0; i < models.Count; i++)
                 {
@@ -105,20 +111,28 @@ public class XRManager : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        // Events deregistrieren
+        controls.XR.PrevModel.performed -= OnPrevModel;
+        controls.XR.NextModel.performed -= OnNextModel;
+        controls.XR.LeftStickMove.performed -= OnLeftStickMove;
+        controls.XR.LeftStickMove.canceled -= OnLeftStickMoveCanceled;
+        controls.XR.RightStickMove.performed -= OnRightStickMove;
+        controls.XR.RightStickMove.canceled -= OnRightStickMoveCanceled;
+
+        controls.XR.Disable();
+        controls.Disable();
+    }
+
+    // ...existing code...
+
     /// <summary>
     /// Update is called once per frame 
     /// </summary>
     void Update()
     {
-        // Polling fallback: direkten Wert der Actions pro Frame lesen (Üpolling)
-        // if (controls != null)
-        // {
-        //     if (controls.XR.LeftStickMove.enabled)
-        //         leftStickInput = controls.XR.LeftStickMove.ReadValue<Vector2>();
-        //     if (controls.XR.RightStickMove.enabled)
-        //         rightStickInput = controls.XR.RightStickMove.ReadValue<Vector2>();
-        // }
-
+       
         // Debug-Ausgabe: Thumbstick-Werte loggen
         Debug.Log($"LeftStick: {leftStickInput}, RightStick: {rightStickInput}");
 

@@ -1126,6 +1126,24 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchPassThrough"",
+                    ""type"": ""Button"",
+                    ""id"": ""b3a4b1aa-26a7-4529-adb2-d84d72f22581"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleLaser"",
+                    ""type"": ""Button"",
+                    ""id"": ""64ea4c7b-f243-46bf-b612-4b00da4bfd34"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1181,6 +1199,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Rotatevertebrae"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""05f7cf18-1182-4f5b-89d5-237107c8dade"",
+                    ""path"": ""<XRController>{RightHand}/primaryButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchPassThrough"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2a44b4b-24e9-4974-b238-26e2f4f4c183"",
+                    ""path"": ""<XRController>{RightHand}/thumbstickClicked"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleLaser"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1280,6 +1320,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_XR_LeftStickMove = m_XR.FindAction("LeftStickMove", throwIfNotFound: true);
         m_XR_RightStickMove = m_XR.FindAction("RightStickMove", throwIfNotFound: true);
         m_XR_Rotatevertebrae = m_XR.FindAction("Rotatevertebrae", throwIfNotFound: true);
+        m_XR_SwitchPassThrough = m_XR.FindAction("SwitchPassThrough", throwIfNotFound: true);
+        m_XR_ToggleLaser = m_XR.FindAction("ToggleLaser", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1746,6 +1788,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_XR_LeftStickMove;
     private readonly InputAction m_XR_RightStickMove;
     private readonly InputAction m_XR_Rotatevertebrae;
+    private readonly InputAction m_XR_SwitchPassThrough;
+    private readonly InputAction m_XR_ToggleLaser;
     /// <summary>
     /// Provides access to input actions defined in input action map "XR".
     /// </summary>
@@ -1777,6 +1821,14 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "XR/Rotatevertebrae".
         /// </summary>
         public InputAction @Rotatevertebrae => m_Wrapper.m_XR_Rotatevertebrae;
+        /// <summary>
+        /// Provides access to the underlying input action "XR/SwitchPassThrough".
+        /// </summary>
+        public InputAction @SwitchPassThrough => m_Wrapper.m_XR_SwitchPassThrough;
+        /// <summary>
+        /// Provides access to the underlying input action "XR/ToggleLaser".
+        /// </summary>
+        public InputAction @ToggleLaser => m_Wrapper.m_XR_ToggleLaser;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1818,6 +1870,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Rotatevertebrae.started += instance.OnRotatevertebrae;
             @Rotatevertebrae.performed += instance.OnRotatevertebrae;
             @Rotatevertebrae.canceled += instance.OnRotatevertebrae;
+            @SwitchPassThrough.started += instance.OnSwitchPassThrough;
+            @SwitchPassThrough.performed += instance.OnSwitchPassThrough;
+            @SwitchPassThrough.canceled += instance.OnSwitchPassThrough;
+            @ToggleLaser.started += instance.OnToggleLaser;
+            @ToggleLaser.performed += instance.OnToggleLaser;
+            @ToggleLaser.canceled += instance.OnToggleLaser;
         }
 
         /// <summary>
@@ -1844,6 +1902,12 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Rotatevertebrae.started -= instance.OnRotatevertebrae;
             @Rotatevertebrae.performed -= instance.OnRotatevertebrae;
             @Rotatevertebrae.canceled -= instance.OnRotatevertebrae;
+            @SwitchPassThrough.started -= instance.OnSwitchPassThrough;
+            @SwitchPassThrough.performed -= instance.OnSwitchPassThrough;
+            @SwitchPassThrough.canceled -= instance.OnSwitchPassThrough;
+            @ToggleLaser.started -= instance.OnToggleLaser;
+            @ToggleLaser.performed -= instance.OnToggleLaser;
+            @ToggleLaser.canceled -= instance.OnToggleLaser;
         }
 
         /// <summary>
@@ -2133,5 +2197,19 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRotatevertebrae(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "SwitchPassThrough" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnSwitchPassThrough(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ToggleLaser" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnToggleLaser(InputAction.CallbackContext context);
     }
 }

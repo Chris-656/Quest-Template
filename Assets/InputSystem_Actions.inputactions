@@ -1040,6 +1040,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SwitchPassThrough",
+                    "type": "Button",
+                    "id": "b3a4b1aa-26a7-4529-adb2-d84d72f22581",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleLaser",
+                    "type": "Button",
+                    "id": "64ea4c7b-f243-46bf-b612-4b00da4bfd34",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1095,6 +1113,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Rotatevertebrae",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "05f7cf18-1182-4f5b-89d5-237107c8dade",
+                    "path": "<XRController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchPassThrough",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2a44b4b-24e9-4974-b238-26e2f4f4c183",
+                    "path": "<XRController>{RightHand}/thumbstickClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleLaser",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
